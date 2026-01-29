@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    width: 1200px;
+}
+
+.mi-tabla .mat-mdc-header-row {
+    background-color: #a3a3a333;
+    /* color de fondo del header */
+}
+
+.mi-tabla .mat-mdc-row:hover {
+    background-color: #9090901c;
+    cursor: pointer;
+}
