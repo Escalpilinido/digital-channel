@@ -2,10 +2,19 @@
 
   <section class="brand">
     <h1>DigitalChanel</h1>
-    <p>Desarrolladores</p>
+  </section>
+  <section class="actions">
+    <button mat-flat-button color="primary">Agregar</button>
+    <button mat-flat-button color="tertiary">Editar</button>
+    <button mat-stroked-button>Básico</button>
+    <button mat-flat-button color="warn">Eliminar</button>
   </section>
   <section class="table-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mi-tabla">
+
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
       <!-- name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -44,5 +53,8 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+      aria-label="Selecciona página de usuarios"></mat-paginator>
   </section>
 </article>

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { usersData } from '../assets/users.mock';
 
 
@@ -16,11 +18,17 @@ interface UserData {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatButtonModule, MatPaginatorModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'surname', 'seniority', 'years', 'availability', 'descripcion'];
-  dataSource: UserData[] = usersData;
+  dataSource = new MatTableDataSource<UserData>(usersData);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 }
