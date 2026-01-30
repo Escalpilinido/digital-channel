@@ -1,3 +1,11 @@
+export interface UserData {
+    name: string;
+    surname: string;
+    seniority: string;
+    years: number;
+    availability: boolean;
+    descripcion: string;
+}
 export const usersData = [
     {
         "name": "María",
@@ -79,4 +87,4 @@ export const usersData = [
         "availability": true,
         "descripcion": "Desarrolladora orientada al detalle, interesada en mejorar la calidad del código."
     }
-];
+] as UserData[];
