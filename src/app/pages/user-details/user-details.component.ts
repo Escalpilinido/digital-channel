@@ -12,17 +12,10 @@ import { UserData } from '../../../assets/users.mock';
 })
 export class UserDetailsComponent {
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
 
-  user?: UserData;
+  user!: UserData;
 
   constructor() {
-    this.initUserData();
-  }
-
-  initUserData() {
-    const user = this.route.snapshot.data['user'] || history.state.user;
-
-    user ? this.user = user : this.router.navigate(['/user-info']);
+    this.user = this.route.snapshot.data['user'];
   }
 }
