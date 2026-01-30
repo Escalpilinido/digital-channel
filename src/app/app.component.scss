@@ -1,28 +1,15 @@
 .container {
     display: flex;
     height: 100dvh;
-    justify-content: center;
-    align-items: center;
+    width: 100dvw;
     flex-direction: column;
     gap: 20px;
     background: oldlace;
 }
 
-.actions {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 10px;
-}
-
-table {
-    width: 600px;
-}
-
-.mi-tabla .mat-mdc-header-row {
-    background-color: #a3a3a333;
-    /* color de fondo del header */
-}
-
-.mi-tabla .mat-mdc-row:hover {
-    background-color: #9090901c;
+.mat-toolbar {
+    background: #ff0000e6;
+    font-weight: bold;
+    color: white;
+    font-family: sans-serif;
 }

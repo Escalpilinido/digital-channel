@@ -1,58 +1,8 @@
 <article class="container">
+  <mat-toolbar class="toolbar">
+    <span>Digital Chanel</span>
+  </mat-toolbar>
 
-  <section class="brand">
-    <h1>DigitalChanel</h1>
-  </section>
-  <section class="actions">
-    <button mat-flat-button color="primary">Agregar desarrollador</button>
-    <button mat-stroked-button color="secondary" (click)="exportToExcel()">Exportar a excel</button>
-  </section>
-  <section class="table-container">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mi-tabla">
-
-      <!-- name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-        <td mat-cell *matCellDef="let user"><a [routerLink]="['/user-details']" [state]="{ user }">{{user.name}}</a>
-        </td>
-      </ng-container>
-
-      <!-- surname Column -->
-      <ng-container matColumnDef="surname">
-        <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-        <td mat-cell *matCellDef="let user"> {{user.surname}} </td>
-      </ng-container>
-
-      <!-- seniority Column -->
-      <ng-container matColumnDef="seniority">
-        <th mat-header-cell *matHeaderCellDef> Experiencia </th>
-        <td mat-cell *matCellDef="let user"> {{user.seniority}} </td>
-      </ng-container>
-
-      <!-- years Column -->
-      <ng-container matColumnDef="years">
-        <th mat-header-cell *matHeaderCellDef> Años </th>
-        <td mat-cell *matCellDef="let user"> {{user.years}} </td>
-      </ng-container>
-
-      <!-- availability Column -->
-      <ng-container matColumnDef="availability">
-        <th mat-header-cell *matHeaderCellDef> Disponibilidad </th>
-        <td mat-cell *matCellDef="let user"> {{user.availability}} </td>
-      </ng-container>
-
-      <!-- descripcion Column -->
-      <ng-container matColumnDef="descripcion">
-        <th mat-header-cell *matHeaderCellDef> Descripción </th>
-        <td mat-cell *matCellDef="let user"> {{user.descripcion}} </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
-      aria-label="Selecciona página de usuarios"></mat-paginator>
-  </section>
 
   <router-outlet></router-outlet>
 </article>
