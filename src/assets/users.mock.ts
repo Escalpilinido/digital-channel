@@ -40,7 +40,7 @@ export const usersData = [
         "descripcion": "Desarrolladora front-end centrada en buenas prácticas de UX y accesibilidad."
     },
     {
-        "name": "Pedro",
+        "name": "Juan",
         "surname": "Sánchez",
         "seniority": "senior",
         "years": 10,
