@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import * as XLSX from 'xlsx';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../services/users';
 import { first } from 'rxjs';
 
@@ -20,6 +20,7 @@ import { first } from 'rxjs';
 })
 export class UserInfoComponent implements AfterViewInit {
   private usersService = inject(UsersService);
+  private router = inject(Router);
 
   displayedColumns: string[] = ['name', 'surname', 'seniority', 'years', 'availability'];
   dataSource = new MatTableDataSource<UserData>(usersData);
@@ -52,5 +53,9 @@ export class UserInfoComponent implements AfterViewInit {
 
     /* Download Excel */
     XLSX.writeFile(wb, 'Usuarios_DigitalChanel.xlsx');
+  }
+
+  goToCreateUser() {
+    this.router.navigate(['/user-create']);
   }
 }
