@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UserData } from '../../../assets/users.mock';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -11,11 +11,7 @@ import { UserData } from '../../../assets/users.mock';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserDetailsComponent {
-  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
-  user!: UserData;
-
-  constructor() {
-    this.user = this.route.snapshot.data['user'];
-  }
+  user = this.router.getCurrentNavigation()?.extras.state?.['user'];
 }

@@ -15,7 +15,6 @@ export const userDetailsGuard: CanActivateFn = () => {
 
     // If user doesn't exist or doesn't have a name we block navigation
     if (!user || !user?.name) {
-        router.navigate(['/user-info']);
         return false;
     }
 

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import * as XLSX from 'xlsx';
 import { RouterModule } from '@angular/router';
+import { UsersService } from '../../services/users';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-user-info',
@@ -16,13 +18,30 @@ import { RouterModule } from '@angular/router';
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss'],
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements AfterViewInit {
+  private usersService = inject(UsersService);
+
   displayedColumns: string[] = ['name', 'surname', 'seniority', 'years', 'availability'];
   dataSource = new MatTableDataSource<UserData>(usersData);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  /************************************
+   *  Hooks
+   * **********************************/
+
   ngAfterViewInit() {
+    this.initUsers();
+  }
+
+  /************************************
+   *  Methods
+   * **********************************/
+
+  initUsers() {
+    this.usersService.getUsers().pipe(first()).subscribe(users => {
+      this.dataSource.data = users;
+    });
     this.dataSource.paginator = this.paginator;
   }
 
@@ -31,7 +50,7 @@ export class UserInfoComponent {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Usuarios');
 
-    /* guardar el archivo */
+    /* Download Excel */
     XLSX.writeFile(wb, 'Usuarios_DigitalChanel.xlsx');
   }
 }
