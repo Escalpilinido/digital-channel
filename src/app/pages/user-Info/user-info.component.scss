@@ -1,0 +1,26 @@
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 600px;
+}
+
+.mi-tabla .mat-mdc-header-row {
+    background-color: #a3a3a333;
+    /* color de fondo del header */
+}
+
+.mi-tabla .mat-mdc-row:hover {
+    background-color: #9090901c;
+}

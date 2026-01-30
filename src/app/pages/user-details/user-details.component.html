@@ -1,0 +1,21 @@
+<article class="container">
+    <section class="brand">
+        <h1>Detalle del usuario</h1>
+    </section>
+    <section class="card-container">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title> Nombre: {{user.name}} {{user.surname}}</mat-card-title>
+                <mat-card-subtitle>Experiencia: {{user.seniority}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Años: {{user.years}}</p>
+                <p>Disponibilidad: {{user.availability ? 'Disponible' : 'No disponible'}}</p>
+                <p>Descripción: {{user.descripcion}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-stroked-button color="primary">Enviar correo</button>
+            </mat-card-actions>
+        </mat-card>
+    </section>
+</article>
