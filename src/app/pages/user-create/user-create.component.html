@@ -1,7 +1,9 @@
 <article class="container">
-    <h1>Crear nuevo desarrollador</h1>
+    <section class="brand">
+        <h1>Crear nuevo desarrollador</h1>
+    </section>
     <section class="form-container">
-        <form [formGroup]="formNewUser">
+        <form [formGroup]="formNewUser" (ngSubmit)="saveUser()">
             <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
                 <input matInput formControlName="name" placeholder="Ej. Juan">
@@ -35,7 +37,7 @@
 
             <section class="actions">
                 <button mat-button type="button" [routerLink]="['/user-info']">Cancelar</button>
-                <button mat-flat-button color="primary" [disabled]="formNewUser.invalid" (click)="saveUser()">Crear
+                <button mat-flat-button color="primary" type="submit" [disabled]="formNewUser.invalid">Crear
                     Usuario</button>
             </section>
         </form>

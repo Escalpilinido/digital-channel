@@ -3,7 +3,9 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { RouterLink, RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
+import { UsersService } from "../../services/users.service";
+import { UserData } from "../../../assets/users.mock";
 
 @Component({
     selector: 'app-user-create',
@@ -14,6 +16,8 @@ import { RouterLink, RouterModule } from "@angular/router";
 })
 export class UserCreateComponent {
     private fb = inject(FormBuilder)
+    private usersService = inject(UsersService)
+    private router = inject(Router)
 
     formNewUser = this.fb.group({
         name: ['', [Validators.required]],
@@ -25,8 +29,8 @@ export class UserCreateComponent {
     })
 
     saveUser() {
-        if (this.formNewUser.valid) {
-            console.log(this.formNewUser.value);
-        }
+        const newUserData = this.formNewUser.getRawValue() as unknown as UserData;
+        this.usersService.createUser(newUserData);
+        this.router.navigate(['/user-info']);
     }
 }
