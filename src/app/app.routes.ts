@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/user-info/user-info.component').then(m => m.UserInfoComponent),
         resolve: { users: usersResolver }
     },
+    {
+        path: 'user-create',
+        loadComponent: () => import('./pages/user-create/user-create.component').then(m => m.UserCreateComponent),
+    },
     { path: '', redirectTo: '/user-info', pathMatch: 'full' },
     { path: '**', redirectTo: '/user-info' }
 ];

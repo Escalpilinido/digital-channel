@@ -1,0 +1,45 @@
+<article class="container">
+    <section class="brand">
+        <h1>Crear nuevo desarrollador</h1>
+    </section>
+    <section class="form-container">
+        <form [formGroup]="formNewUser" (ngSubmit)="saveUser()">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" placeholder="Ej. Juan">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="surname" placeholder="Ej. Pérez">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Experiencia</mat-label>
+                <input matInput formControlName="seniority" placeholder="Ej. Senior">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Años de experiencia</mat-label>
+                <input matInput type="number" formControlName="years" placeholder="Ej. 5">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Disponibilidad</mat-label>
+                <input matInput formControlName="availability" placeholder="Ej. Inmediata o true/false">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="descripcion"
+                    placeholder="Cuenta un poco sobre el perfil..."></textarea>
+            </mat-form-field>
+
+            <section class="actions">
+                <button mat-button type="button" [routerLink]="['/user-info']">Cancelar</button>
+                <button mat-flat-button color="primary" type="submit" [disabled]="formNewUser.invalid">Crear
+                    Usuario</button>
+            </section>
+        </form>
+    </section>
+</article>

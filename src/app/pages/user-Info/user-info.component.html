@@ -1,6 +1,9 @@
 <article class="user-info">
+    <section class="brand">
+        <h1>Tabla de usuarios</h1>
+    </section>
     <section class="actions">
-        <button mat-flat-button color="primary">Agregar desarrollador</button>
+        <button mat-flat-button color="primary" [routerLink]="['/user-create']">Agregar desarrollador</button>
         <button mat-stroked-button color="secondary" (click)="exportToExcel()">Exportar a excel</button>
     </section>
     <section class="table-container">
